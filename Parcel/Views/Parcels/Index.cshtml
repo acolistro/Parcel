@@ -9,10 +9,9 @@
   @foreach (Parcel parcel in Model)
   {
     <li>@parcel.Contents</li>  
-    <li>@parcel.DimensionsH</li>  
-    <li>@parcel.DimensionsW</li>  
-    <li>@parcel.DimensionsL</li>  
+    <li>@myVolume</li>  
     <li>@parcel.Weight</li>  
+    <li>@myCost</li>   
   }
 </ul>
 <a href="/parcels/new">Add a new Parcel.</a>

@@ -20,9 +20,11 @@ namespace Shipping.Controllers
     }
 
     [HttpPost("/Parcels")]
-    public ActionResult Create(string contents, string dimensions, int weight)
+    public ActionResult Create(string contents, int dimensionsH, int dimensionsW, int dimensionsL, int weight)
     {
-      Parcel myParcel = new Parcel(makeModel, price, miles);
+      Parcel myParcel = new Parcel(contents, dimensionsH, dimensionsW, dimensionsL, weight);
+      string myVolume = myParcel.Volume(dimensionsH, dimensionsW, dimensionsL);
+      int myCost = myParcel.CostToShip(myVolume, weight);
       return RedirectToAction("Index");
     }
     
