@@ -18,11 +18,18 @@ namespace Shipping.Controllers
     {
       return View();
     }
+    [HttpGet("/Parcels/endgame")]
+    public ActionResult EndGame()
+    {
+      return View();
+    }
 
     [HttpPost("/Parcels")]
-    public ActionResult Create(string contents, string dimensions, int weight)
+    public ActionResult Create(string contents, int dimensionsH, int dimensionsW, int dimensionsL, int weight)
     {
-      Parcel myParcel = new Parcel(makeModel, price, miles);
+      Parcel myParcel = new Parcel(contents, dimensionsL, dimensionsM, dimensionsS, weight);
+      string myVolume = myParcel.Volume(dimensionsL, dimensionsM, dimensionsS);
+      int myCost = myParcel.CostToShip(myVolume, weight);
       return RedirectToAction("Index");
     }
     
