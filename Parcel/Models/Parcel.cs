@@ -5,13 +5,13 @@ namespace Shipping.Models
   public class Parcel
   {
     public string Contents { get; set; }
-    public int DimensionsH { get; set; }
-    public int DimensionsW { get; set; }
     public int DimensionsL { get; set; }
+    public int DimensionsM { get; set; }
+    public int DimensionsS { get; set; }
     public int Weight { get; set; }
     private static List<Parcel> _instances = new List<Parcel> {};
 
-    public Parcel (string contents, int dimensionsH, int dimensionsW, int dimensionsL, int weight)
+    public Parcel (string contents, int dimensionsL, int dimensionsM, int dimensionS, int weight)
     {
       Contents = contents;
       DimensionsL = dimensionsL;
@@ -21,7 +21,7 @@ namespace Shipping.Models
       _instances.Add(this);
     }
 
-    public static string Volume(dimensionsH, dimensionsW, dimensionsL)
+    public static string Volume(int dimensionsH, int dimensionsW, int dimensionsL)
     {
       int parcelVolume = (dimensionsH*dimensionsW*dimensionsL);
       string volume = "";
